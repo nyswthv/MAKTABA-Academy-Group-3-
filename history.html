@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maktaba Academy - History</title>
+  <link rel="icon" type="image/x-icon" href="images/logolib.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  <style>
+    body {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      margin: 0;
+      padding: 0;
+      background: #FCF8F0;
+      color: #4A3C33;
+      min-height: 100vh;
+      display: flex; /* Make body a flex container */
+      flex-direction: column; /* Stack children vertically */
+    }
+
+    .header-container {
+      display: flex;
+      background: #6F1A3E;     /*header*/
+      color: #FCF8F0;
+      padding: 40px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .logo {
+      position: absolute;
+      left: 40px;
+      top: 50%; /*website logo*/
+      transform: translateY(-50%);
+      height: 260px;
+    }
+
+
+    .header-text h1 {
+      margin: 0;
+      font-size: 40px;
+      font-weight: bold;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      color:  #FCF8F0;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-text p {
+      font-size: 16px;
+      color: #FCF8F0;
+      margin-top: 10px;
+      opacity: 0.95;
+    }
+
+    nav {
+      background: linear-gradient(to right, #7D2146, #6F1A3E);
+      padding: 5px 0;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;   
+      font-size: 14px; /*navigation bar*/
+      text-align: left;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: left;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      position: relative;
+      margin: 0 25px;
+    }
+
+    nav ul li a {
+      color: #FCF8F0;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 18px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      font-size: 1.1em;
+      display: inline-block;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      background-color: #fffafa;
+      color: #5F1534;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      text-decoration: none;
+    }
+
+    nav ul li.dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute; /*dropdown-nav*/
+      top: 100%;
+      left: 0;
+      background: linear-gradient(to right, #7D2146, #6F1A3E);
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 0;
+      z-index: 1000;
+      min-width: 180px;
+      overflow: hidden;
+    }
+
+    .dropdown-menu li {
+      margin: 0;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      width: 100%;
+      padding: 12px 18px;
+      color: #FCF8F0;
+      font-size: 1em;
+      font-weight: bold;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: transparent;
+      border-radius: 0;
+      text-decoration: none;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #fffafa;
+      color: #5F1534;
+      text-decoration: none;
+
+    }  
+    .leftcolumn {
+      float: left;
+      width: 75%; /*MAKTABA Academy column*/
+      padding: 20px;
+    }
+
+    .rightcolumn {
+      float: left; /*Announcement column*/
+      width: 25%;
+      padding: 20px;
+    }
+
+    /* Adjusted .container to wrap the main content for flex-grow */
+    .main-content-wrapper {
+        flex-grow: 1; /* Allows the main content to take up available space */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 35px;
+      background-color: #FFFFFF;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      line-height: 1.8;
+      border: 1px solid #D4C9B6;
+    }
+
+    .section-title {
+      color: #6F1A3E;
+      border-bottom: 2px solid #D9D2C3;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+      font-family: "Georgia", serif;
+      font-size: 2.5em;
+      text-align: center;
+      letter-spacing: 0.8px;
+    }
+
+        .w3-bar .w3-button {
+      padding: 16px;
+    }
+
+    footer {
+      background-color: #5A1632;
+      color: #E6E0D5;
+      text-align: center;
+      font-weight: bold;
+      padding: 10px;
+      font-size: 16px;
+      box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
+      width: 100%; /* Ensure footer spans full width */
+      box-sizing: border-box; /* Include padding in the width calculation */
+    }
+
+    footer a {
+      color: #A38B67;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: none;
+      color: #A38B67;
+    }
+
+    .muted-text {
+      color: #7A6F62;
+      font-size: 1.05em;
+      font-style: italic;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+/* W3.CSS Card and Row Customizations for Equal Height & Vertical Stacking */
+        .w3-row-padding {
+            display: flex;
+            flex-wrap: wrap; /* Allows items to wrap if needed */
+            align-items: stretch; /* Makes children (w3-third) stretch to tallest height within their flex context */
+            margin-bottom: 40px; /* Consistent space between cards and footer */
+            max-width: 960px; /* Constrain width for better readability */
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 16px; /* W3.CSS default padding for responsiveness */
+        }
+
+        .w3-third {
+            width: 100%; /* IMPORTANT: Forces each column to take full width, stacking them vertically */
+            margin-bottom: 30px; /* Adds space between stacked cards */
+            display: flex; /* Keeps internal flex behavior for stretching the card itself */
+            flex-direction: column;
+        }
+
+        .w3-card.w3-container {
+            flex: 1; /* Allows the card to grow and fill the w3-third's height */
+            min-height: 460px; /* Ensures cards maintain this minimum height globally */
+            padding-bottom: 20px; /* Consistent bottom padding inside the card */
+            display: flex; /* Make the card content itself a flex container */
+            flex-direction: column; /* Stack content vertically within the card */
+            justify-content: space-between; /* Distribute space between elements if card is taller than content */
+        }
+
+        /* Minor adjustments to prevent extra spacing in cards */
+        .w3-card.w3-container p:last-of-type,
+        .w3-card.w3-container ul {
+            margin-bottom: 0;
+        }
+
+    /* Specific style for the large text paragraph */
+    .large-text-paragraph {
+      font-size: 1.15em; /* Adjust this value as needed. 1.15em is slightly larger than the default. */
+      line-height: 2; /* Adjust line-height for better readability with larger text */
+    }
+
+    /* Style for the date inside the large-text-paragraph */
+    .large-text-paragraph .w3-opacity {
+        display: block; /* Makes the date go to a new line */
+        margin-top: 10px; /* Adds space above the date */
+        font-size: 0.9em; /* Make the date slightly smaller than the main text, but still readable */
+        text-align: right; /* Align the date to the right if desired */
+    }
+
+
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 768px) {
+      .logo {
+        position: static; /* Remove absolute positioning on smaller screens */
+        transform: none;
+        height: 100px; /* Adjust logo size */
+        margin-bottom: 15px; /* Add space below logo */
+      }
+
+      .header-container {
+        flex-direction: column; /* Stack logo and text vertically */
+        padding: 20px 0;
+      }
+
+      .header-text h1 {
+        font-size: 2em; /* Smaller font size for header title */
+      }
+
+      .header-text p {
+        font-size: 1em; /* Smaller font size for header subtitle */
+      }
+
+      nav ul {
+        flex-direction: column; /* Stack navigation items vertically */
+        padding: 10px 0;
+      }
+
+      nav ul li {
+        margin: 5px 0; /* Adjust spacing between nav items */
+      }
+
+      nav ul li a {
+        padding: 8px 15px; /* Adjust padding for nav links */
+        font-size: 1em;
+      }
+
+      .dropdown-menu {
+        position: static; /* Make dropdown static on small screens */
+        background: none;
+        box-shadow: none;
+        border-radius: 0;
+        min-width: unset;
+      }
+
+      .dropdown-menu li a {
+        padding-left: 30px; /* Indent dropdown items */
+      }
+
+      .container {
+        margin: 20px auto;
+        padding: 20px;
+      }
+
+      .section-title {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+/* w3-third is already 100% globally now, so no specific width change needed here */
+            /* margin-bottom is also global, but min-height needs to be auto for natural flow */
+            .w3-card.w3-container {
+                min-height: auto; /* Allows cards to shrink/grow based on content on small screens */
+            }
+
+            .w3-row-padding {
+                padding: 0 16px;
+                /* margin-bottom is handled globally for stacking */
+            }
+            .w3-container#about {
+                padding: 60px 16px;
+            }
+
+            footer {
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .w3-bar .w3-button {
+                padding: 16px;
+            }
+
+            /* Responsive adjustment for the large-text-paragraph on smaller screens */
+            .large-text-paragraph {
+                font-size: 16px; /* Adjust to a suitable size for smaller screens */
+            }
+}
+        /* New Styles for Modals and Search */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1001; /* Higher z-index to appear on top of other content */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* 15% from the top and centered */
+            padding: 30px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-width: 600px; /* Slightly wider for search results */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            color: #4A3C33; /* Inherit body text color */
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        .modal-content h2 {
+            text-align: center;
+            color: #6F1A3E;
+            margin-bottom: 25px;
+        }
+
+        .modal-content form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #5A1632;
+        }
+
+        .modal-content form input[type="text"],
+        .modal-content form input[type="email"],
+        .modal-content form input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .modal-content form button {
+            background-color: #6F1A3E;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            width: 100%;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-content form button:hover {
+            background-color: #5A1632;
+        }
+
+        .modal-content p {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        .modal-content p a {
+            color: #7D2146;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .modal-content p a:hover {
+            text-decoration: underline;
+        }
+
+               /* Optional: Style for right-aligned nav items */
+        .right-aligned {
+            margin-left: auto; /* Pushes items to the right */
+            margin-right: 0; /* Ensures no extra right margin */
+          }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-container">
+      <img src="images/logolib.png" alt="Maktaba Academy Logo" class="logo" />
+      <div class="header-text">
+        <h1>MAKTABA Academy</h1>
+        <p>Guiding You Through Citations, References, and Beyond.</p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="#" class="active">About Us</a>
+        <ul class="dropdown-menu">
+          <li><a href="history.html" class="active">History</a></li>
+          <li><a href="VMO.html">Vision, Mission, Objective</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#">Directory Staff</a>
+        <ul class="dropdown-menu">
+          <li><a href="chiefs.html">Chief Librarian</a></li>
+          <li><a href="organization.html">Organizational Chart</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+       <a href="guidelines.html">Guidelines</a>
+        <ul class="dropdown-menu">
+          <li><a href="citation-basics.html">In-text Citation: The Basics</a></li>
+          <li><a href="citation-authors.html">In-text Citation: Author/Authors</a></li>
+          <li><a href="ref-basic.html">Reference List: Basic Rules</a></li>
+          <li><a href="ref-authors.html">Reference List: Author/Authors</a></li>
+          <li><a href="ref-periodicals.html">Reference List: Articles in Periodicals</a></li>
+          <li><a href="ref-books.html">Reference List: Books</a></li>
+          <li><a href="ref-other-print.html">Reference List: Other Print Sources</a></li>
+          <li><a href="ref-electronic.html">Reference List: Electronic Sources</a></li>
+          <li><a href="ref-audio.html">Reference List: Audiovisual Media</a></li>
+          <li><a href="ref-other.html">Reference List: Other Non-Print Sources</a></li>
+        </ul>
+      </li>
+     <li><a href="resources.html">Resources</a></li>
+     <li><a href="form.html">Contact Us</a></li>
+     <li><a href="group.html">Group Info</a></li> 
+
+
+      <li class="right-aligned"><a href="#" id="openLoginModal">Login</a></li>
+      <li><a href="#" id="openSignupModal">Sign Up</a></li>
+    </ul>
+  </nav>
+
+  
+<div class="main-content-wrapper">
+  <header class="w3-container w3-theme w3-padding" id="myHeader">
+        <div class="w3-center">
+            <h4>History of MAKTABA</h4>
+            <h1 class="w3-xxxlarge w3-animate-bottom">A history that lead to the better future</h1>
+            <div class="w3-padding-32">
+            </div>
+        </div>
+    </header>
+
+<div class="History-section-wrapper">
+<div class="w3-row-padding w3-center w3-margin-top">
+  <div class="w3-third">
+    <div class="w3-card w3-container">
+      <h2>MAKTABA Academy, Malaysia</h2>  
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="images/logo academy.jpg" alt="images" style="width:100%;">
+          </div>
+
+          <div class="item">
+            <img src="images/history2.jpg" alt="images" style="width:100%;">
+          </div>
+          
+          <div class="item">
+            <img src="images/history3.jpg" alt="images" style="width:100%;">
+          </div>
+        </div>
+
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<div class="w3-card-4 w3-margin w3-lilac">
+      <div class="w3-container">
+      <h3>MAKTABA Academy</b></h3>
+      <p class="large-text-paragraph"> Where it all begins, Maktaba Academy was built in July 2014. It established digital academic library that has vision for the young generation to develop. Maktaba starting with its literacy skills such as references & citations skills. These services actually help students in enhancing their report writing. Copyright and IP are crucial in giving credits to its owner of works. Guidelines such as on how to do citations for various materials & resources are crucial in research paper and that are very helpful for students and even lecturers or researchers in  doing their works. We provided beyond academic performance which are on copyright and intellectual property education that will protect people from plagiarism a deeper appreciation for the ownership of creative works within academic community. Maktaba Academy has proven the writing report of users when they started using our website back on 2015. There was the year that our website began to shine around academic community. They become more confident with their works since they are not using someone's else works without permission. Their contents are free from plagiarism that might affected their performance, but ever since we have provided these services to them, it becomes easier, honest and original work form its owner. Furthermore, many successful programs were being held online by Maktaba Academy such as literacy skills activity which can conduct through an online session. Maktaba Academy thrive to collab with more partnerships with school, community centers and online platforms to reach to a wider audience that we are able to help for their bright future. All in all, Maktaba Academy goals are to ensure future youth development and engagement in a lifelong learning which will bring inspirations to the next generation ahead. <span class="w3-opacity">July 2, 2025</span></p>
+    </div>
+</div>
+</div>  
+
+<div id="signupModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Sign Up for Maktaba Academy</h2>
+    <form id="signupForm">
+      <label for="signupUsername">Username:</label>
+      <input type="text" id="signupUsername" name="username" required>
+      <label for="signupEmail">Email:</label>
+      <input type="email" id="signupEmail" name="email" required>
+      <label for="signupPassword">Password:</label>
+      <input type="password" id="signupPassword" name="password" required>
+      <label for="signupConfirmPassword">Confirm Password:</label>
+      <input type="password" id="signupConfirmPassword" name="confirmPassword" required>
+      <button type="submit">Sign Up</button>
+      <p id="signupMessage" style="color: red;"></p>
+    </form>
+    <p>Already have an account? <a href="#" id="showLogin">Login here</a></p>
+  </div>
+</div>
+
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Login to Maktaba Academy</h2>
+    <form id="loginForm">
+      <label for="loginUsername">Username or Email:</label>
+      <input type="text" id="loginUsername" name="usernameOrEmail" required>
+      <label for="loginPassword">Password:</label>
+      <input type="password" id="loginPassword" name="password" required>
+      <button type="submit">Login</button>
+      <p id="loginMessage" style="color: red;"></p>
+    </form>
+    <p>Don't have an account? <a href="#" id="showSignup">Sign Up here</a></p>
+  </div>
+</div>
+
+<footer>
+    <p>&copy;2025 The MAKTABA Academy. All rights reserved. |Last Updated: 2 July 2025. | This website was developed for the purpose of learning XHTML & CSS only. <br>|
+   <a href="privacy.html">Privacy Policy</a> | <a href="termsofuse.html">Terms of Use </a>| Resolution:  1920 x 1800 (Recommended)</p>
+  </footer>
+
+  <script>
+      // Get the modals
+      const signupModal = document.getElementById('signupModal');
+      const loginModal = document.getElementById('loginModal');
+      const searchResultsModal = document.getElementById('searchResultsModal'); // Get the new search results modal
+
+      // Get the <span> element that closes the modals
+      const closeButtons = document.querySelectorAll('.close-button');
+
+      // Get links to switch between modals
+      const showLoginLink = document.getElementById('showLogin');
+      const showSignupLink = document.getElementById('showSignup');
+
+      // Get forms and message areas
+      const signupForm = document.getElementById('signupForm');
+      const signupMessage = document.getElementById('signupMessage');
+      const loginForm = document.getElementById('loginForm');
+      const loginMessage = document.getElementById('loginMessage');
+
+      // Get search elements
+      const searchInput = document.getElementById('searchInput');
+      const searchButton = document.getElementById('searchButton');
+      const resultsList = document.getElementById('resultsList'); // This is inside the searchResultsModal now
+
+      // Get the new navigation links for login/signup
+      const openSignupModalLink = document.getElementById('openSignupModal');
+      const openLoginModalLink = document.getElementById('openLoginModal');
+
+
+      // Function to open a modal
+      function openModal(modal) {
+        modal.style.display = 'block';
+      }
+
+      // Function to close a modal
+      function closeModal(modal) {
+        modal.style.display = 'none';
+        // Clear messages and forms when closing
+        if (modal === signupModal) {
+          signupMessage.textContent = '';
+          signupForm.reset();
+        } else if (modal === loginModal) {
+          loginMessage.textContent = '';
+          loginForm.reset();
+        } else if (modal === searchResultsModal) {
+          resultsList.innerHTML = ''; // Clear search results when closing
+          searchInput.value = ''; // Clear search input
+        }
+      }
+
+      // Event listeners for closing modals
+      closeButtons.forEach(button => {
+        button.onclick = function() {
+          closeModal(this.closest('.modal'));
+        }
+      });
+
+      // Close modal when clicking outside of it
+      window.onclick = function(event) {
+        if (event.target == signupModal) {
+          closeModal(signupModal);
+        }
+        if (event.target == loginModal) {
+          closeModal(loginModal);
+        }
+        if (event.target == searchResultsModal) { // New: Close search results modal
+          closeModal(searchResultsModal);
+        }
+      }
+
+      // Event listeners for the new navigation links
+      if (openSignupModalLink) {
+        openSignupModalLink.onclick = function(e) {
+          e.preventDefault();
+          closeModal(loginModal); // Close login if open
+          openModal(signupModal);
+        };
+      }
+
+      if (openLoginModalLink) {
+        openLoginModalLink.onclick = function(e) {
+          e.preventDefault();
+          closeModal(signupModal); // Close signup if open
+          openModal(loginModal);
+        };
+      }
+
+      // Event listener to switch from login to signup
+      showSignupLink.onclick = function(e) {
+        e.preventDefault();
+        closeModal(loginModal);
+        openModal(signupModal);
+      };
+
+      // Event listener to switch from signup to login
+      showLoginLink.onclick = function(e) {
+        e.preventDefault();
+        closeModal(signupModal);
+        openModal(loginModal);
+      };
+
+      // Handle Sign-up Form Submission
+      signupForm.addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        signupMessage.textContent = ''; // Clear previous messages
+
+        const username = document.getElementById('signupUsername').value;
+        const email = document.getElementById('signupEmail').value;
+        const password = document.getElementById('signupPassword').value;
+        const confirmPassword = document.getElementById('signupConfirmPassword').value;
+
+        if (password !== confirmPassword) {
+          signupMessage.textContent = 'Passwords do not match!';
+          return;
+        }
+
+        try {
+          // *** THIS IS WHERE YOU'D SEND DATA TO YOUR BACKEND ***
+          // Replace with your actual backend API endpoint
+          // For demonstration, we'll just simulate a delay and success/failure.
+          console.log('Attempting to sign up:', { username, email, password });
+          
+          const response = await new Promise(resolve => setTimeout(() => {
+            if (username && email && password) { // Basic client-side check
+              resolve({ ok: true, json: () => Promise.resolve({ message: 'Sign up successful!' }) });
+            } else {
+              resolve({ ok: false, json: () => Promise.resolve({ message: 'Missing required fields.' }) });
+            }
+          }, 1000)); // Simulate network delay
+
+          const data = await response.json(); // Assuming your backend returns JSON
+
+          if (response.ok) {
+            signupMessage.style.color = 'green';
+            signupMessage.textContent = data.message || 'Sign up successful! You can now log in.';
+            signupForm.reset();
+            // Optionally, redirect to login or auto-login
+            setTimeout(() => {
+              closeModal(signupModal);
+              openModal(loginModal);
+            }, 2000);
+          } else {
+            signupMessage.style.color = 'red';
+            signupMessage.textContent = data.message || 'Sign up failed. Please try again.';
+          }
+        } catch (error) {
+          console.error('Error during sign-up:', error);
+          signupMessage.style.color = 'red';
+          signupMessage.textContent = 'An error occurred. Please try again later.';
+        }
+      });
+
+      // Handle Login Form Submission
+      loginForm.addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        loginMessage.textContent = ''; // Clear previous messages
+
+        const usernameOrEmail = document.getElementById('loginUsername').value;
+        const password = document.getElementById('loginPassword').value;
+
+        try {
+          // *** THIS IS WHERE YOU'D SEND DATA TO YOUR BACKEND ***
+          // Replace with your actual backend API endpoint
+          // For demonstration, we'll just simulate a delay and success/failure.
+          console.log('Attempting to log in:', { usernameOrEmail, password });
+
+          const response = await new Promise(resolve => setTimeout(() => {
+            // Simulate successful login for specific credentials
+            if (usernameOrEmail === 'user' && password === 'password123') {
+              resolve({ ok: true, json: () => Promise.resolve({ message: 'Login successful!', token: 'mock-token-123', username: 'user' }) });
+            } else {
+              resolve({ ok: false, json: () => Promise.resolve({ message: 'Invalid credentials.' }) });
+            }
+          }, 1000)); // Simulate network delay
+
+          const data = await response.json(); // Assuming your backend returns JSON
+
+          if (response.ok) {
+            loginMessage.style.color = 'green';
+            loginMessage.textContent = data.message || 'Login successful! Redirecting...';
+            // Store user token/session info (e.g., in localStorage)
+            localStorage.setItem('userToken', data.token); // Example
+            localStorage.setItem('username', data.username); // Example
+
+            // Redirect to a dashboard or home page
+            setTimeout(() => {
+              window.location.href = 'index.html'; // Or a user-specific dashboard
+            }, 1500);
+          } else {
+            loginMessage.style.color = 'red';
+            loginMessage.textContent = data.message || 'Login failed. Invalid credentials.';
+          }
+        } catch (error) {
+          console.error('Error during login:', error);
+          loginMessage.style.color = 'red';
+          loginMessage.textContent = 'An error occurred. Please try again later.';
+        }
+      });
+
+
+      // Handle Search Functionality
+      searchButton.addEventListener('click', performSearch);
+      searchInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+          performSearch();
+        }
+      });
+
+      async function performSearch() {
+        const query = searchInput.value.trim();
+        if (!query) {
+          alert('Please enter a search query.');
+          return;
+        }
+
+        resultsList.innerHTML = '<li>Searching...</li>'; // Show loading message inside the modal
+        openModal(searchResultsModal); // Open the search results modal immediately
+
+             }
+  </script>
+</body>
+</html>

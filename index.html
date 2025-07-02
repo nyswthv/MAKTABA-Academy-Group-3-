@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maktaba Academy - A Sanctuary of Knowledge</title>
+  <link rel="icon" type="image/x-icon" href="images/logolib.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;      /*bodyweb*/
+      margin: 0;
+      padding: 0;
+      background-color: #6F1A3E;
+      color: #FCF8F0;
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    .header-container {
+      display: flex;
+      background: #6F1A3E;     /*header*/
+      color: white;
+      padding: 25px 0;
+      text-align: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .logo {
+      position: absolute;
+      left: 40px;
+      top: 50%;                            /*website logo*/
+      transform: translateY(-50%);
+      height: 260px;
+    }
+
+    .header-text h1 {
+      margin: 0;
+      font-size: 40px;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      color:  #FCF8F0;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-text p {
+      font-size: 16px;
+      color: #FCF8F0;
+      margin-top: 10px;
+      opacity: 0.95;
+    }
+
+    nav {
+      background: linear-gradient(to right, #7D2146, #6F1A3E);
+      padding: 5px 0;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;   
+      font-size: 14px;                               /*navigation bar*/
+      text-align: left;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: left;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      position: relative;
+      margin: 0 25px;
+    }
+
+    nav ul li a {
+      color: #FCF8F0;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 18px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      font-size: 1.1em;
+      display: inline-block;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      background-color: #fffafa;
+      color: #5F1534;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    nav ul li.dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;                               /*dropdown-nav*/
+      top: 100%;
+      left: 0;
+      background: linear-gradient(to right, #7D2146, #6F1A3E);
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 0;
+      z-index: 1000;
+      min-width: 180px;
+      overflow: hidden;
+    }
+
+    .dropdown-menu li {
+      margin: 0;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      width: 100%;
+      padding: 12px 18px;
+      color: #FCF8F0;
+      font-size: 1em;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: transparent;
+      border-radius: 0;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #fffafa;
+      color: #5F1534;
+    }  
+
+        /* New Styles for Modals and Search */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1001; /* Higher z-index to appear on top of other content */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* 15% from the top and centered */
+            padding: 30px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-width: 600px; /* Slightly wider for search results */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            color: #4A3C33; /* Inherit body text color */
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        .modal-content h2 {
+            text-align: center;
+            color: #6F1A3E;
+            margin-bottom: 25px;
+        }
+
+        .modal-content form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #5A1632;
+        }
+
+        .modal-content form input[type="text"],
+        .modal-content form input[type="email"],
+        .modal-content form input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .modal-content form button {
+            background-color: #6F1A3E;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            width: 100%;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-content form button:hover {
+            background-color: #5A1632;
+        }
+
+        .modal-content p {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        .modal-content p a {
+            color: #7D2146;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .modal-content p a:hover {
+            text-decoration: underline;
+        }
+
+        /* Search Bar Styling */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px auto; /* Adjusted margin to be closer to nav */
+            max-width: 800px; /* Wider search bar */
+            padding: 0 16px;
+        }
+
+        #searchInput {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: 2px solid #6F1A3E;
+            border-radius: 8px 0 0 8px;
+            font-size: 1.1em;
+            outline: none;
+        }
+
+        #searchButton {
+            background-color: #6F1A3E;
+            color: #FCF8F0;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        #searchButton:hover {
+            background-color: #5A1632;
+        }
+
+        #searchButton .fa {
+            margin-right: 5px;
+        }
+
+        /* Search Results inside Modal */
+        #searchResultsModal .modal-content {
+            min-height: 200px; /* Give some space for results */
+            text-align: left; /* Align text left inside results modal */
+        }
+
+        #searchResultsModal h2 {
+            margin-top: 0;
+            color: #6F1A3E;
+            text-align: center; /* Keep title centered */
+        }
+
+        #resultsList {
+            list-style: none;
+            padding: 0;
+        }
+
+        #resultsList li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        #resultsList li:last-child {
+            border-bottom: none;
+        }
+
+        #resultsList li h4 {
+            margin: 0 0 5px 0;
+            color: #5A1632;
+        }
+
+        #resultsList li p {
+            margin: 0 0 5px 0;
+            font-size: 0.95em;
+            color: #666;
+        }
+
+        #resultsList li a {
+            color: #7D2146;
+            text-decoration: none;
+        }
+
+        #resultsList li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Optional: Style for right-aligned nav items */
+        .right-aligned {
+            margin-left: auto; /* Pushes items to the right */
+            margin-right: 0; /* Ensures no extra right margin */
+          }
+
+
+
+    .leftcolumn {
+      float: left;
+      width: 75%;                  /*MAKTABA Academy column*/
+      padding: 20px;
+    }
+
+    .rightcolumn {
+      float: left;                 /*Announcement column*/
+      width: 25%;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: #FCF8F0;      /*card use for MAKTABA&announcement*/
+      color: black;
+      padding: 20px;
+      margin-top: 10px;
+    }
+
+     .row  {
+      flex: 1;
+    } 
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(to right, #A38B67, #C0A88B);
+      color: #4A3C33;
+      padding: 18px 40px;
+      text-decoration: none;                                     /*button explore*/
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1.2em;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    }
+
+.footer {
+  padding: 10px;
+  text-align: center;
+  background-color: #5A1632; /*footer*/
+  color: #E6E0D5;
+  width: 100%;
+  flex-shrink: 0; /* Prevent footer from shrinking */
+}
+
+.footer a {
+  color: #A38B67;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: none;
+}
+
+.footer h1 {
+  font-size: 16px;
+  text-align: center;
+}
+
+.footer p {
+  font-weight: none;
+  font-size: 14px;
+  text-align: left;
+}
+    @media screen and (max-width: 800px) {           /*mobile view*/
+      .leftcolumn, .rightcolumn {
+        width: 100%;
+        padding: 0;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      nav ul {
+        flex-direction: column;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <img src="images/logolib.png" alt="Maktaba Academy Logo" class="logo" />
+      <div class="header-text">
+        <h1>MAKTABA Academy</h1>
+        <p>Guiding You Through Citations, References, and Beyond.</p>
+      </div>
+    </div>
+  </header>
+
+ <nav>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li class="dropdown">
+        <a href="#">About Us</a>
+        <ul class="dropdown-menu">
+          <li><a href="history.html">History</a></li>
+          <li><a href="VMO.html">Vision, Mission, Objective</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#">Directory Staff</a>
+        <ul class="dropdown-menu">
+          <li><a href="chiefs.html">Chief Librarian</a></li>
+          <li><a href="organizational.html">Organizational Chart</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+       <a href="guidelines.html">Guidelines</a>
+        <ul class="dropdown-menu">
+	  <li><a href="general-format.html">General Format: APA Style</a></li>
+          <li><a href="citation-basics.html">In-text Citation: The Basics</a></li>
+          <li><a href="citation-authors.html">In-text Citation: Author/Authors</a></li>
+          <li><a href="ref-basic.html">Reference List: Basic Rules</a></li>
+          <li><a href="ref-authors.html">Reference List: Author/Authors</a></li>
+          <li><a href="ref-periodicals.html">Reference List: Articles in Periodicals</a></li>
+          <li><a href="ref-books.html">Reference List: Books</a></li>
+          <li><a href="ref-other-print.html">Reference List: Other Print Sources</a></li>
+          <li><a href="ref-electronic.html">Reference List: Electronic Sources</a></li>
+          <li><a href="ref-audio.html">Reference List: Audiovisual Media</a></li>
+          <li><a href="ref-other.html">Reference List: Other Non-Print Sources</a></li>
+        </ul>
+      </li>
+     <li><a href="resources.html">Resources</a></li>
+     <li><a href="form.html">Contact Us</a></li>
+     <li><a href="group.html">Group Info</a></li> 
+      <li class="right-aligned"><a href="#" id="openLoginModal">Login</a></li>
+      <li><a href="#" id="openSignupModal">Sign Up</a></li>
+    </ul>
+  </nav>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search Maktaba Academy...">
+    <button id="searchButton"><i class="fa fa-search"></i> Search</button>
+  </div>
+
+     
+  <div class="row">
+    <div class="leftcolumn">
+      <div class="card">
+        <h2><u>MAKTABA Academy</u></h2>
+
+        <div style="display: flex; gap: 10px;">
+          <img src="images/library.jpg" style="height: 220px;">
+          <img src="images/library2.jpg" style="height: 220px;">
+          <img src="images/library3.jpg" style="height: 220px;">
+        </div>
+
+        <p style="text-align: center; margin-top: 15px;">
+          We offer a specialized support in English academic writing. Especially in terms of in-text citation, reference list formatting, and other essential academic skills to assist students and researchers in meeting international writing standards.
+        </p>
+
+        <div style="text-align: center; margin-top: 20px;">
+          <a href="history.html" class="btn">Explore Our Academy</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="rightcolumn">
+      <div class="card">
+        <h2><img src="images/announcement.png" alt="icon" width="20" height="20"> Announcement</h2>
+        <ul id="announcementList">
+          <li><strong><i>August 26, 2025:</i></strong><br>The Library will host a special lecture on "Digital Literacy in the 21st Century" at 2:00 PM in the Main Hall. All students are welcome to join us!</li>
+          <li><strong><i>New Arrivals:</i></strong><br>Explore the latest additions to our collection, including novels, historical archives, and literature classics.</li>
+          <li><strong><i>Library Notice:</i></strong><br>Starting July 1st, library operating hours will be extended to 9:00 PM on weekdays to accommodate evening study sessions.</li>
+        </ul>
+      </div>
+    </div>
+   </div>
+
+  <div class="footer">
+    <h1>&copy;2025 The MAKTABA Academy. All rights reserved. |Last Updated: 2 July 2025. | This website was developed for the purpose of learning XHTML & CSS only. <br>|
+   <a href="privacy.html">Privacy Policy</a> | <a href="termsofuse.html">Terms of Use </a>| Resolution:  1920 x 1800 (Recommended)</h1>
+  </div>
+
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" id="closeLoginModal">&times;</span>
+      <h2>Login</h2>
+      <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="#" id="switchToSignup">Sign Up</a></p>
+    </div>
+  </div>
+
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" id="closeSignupModal">&times;</span>
+      <h2>Sign Up</h2>
+      <form>
+        <label for="newUsername">Username:</label>
+        <input type="text" id="newUsername" name="newUsername" required>
+        <label for="newEmail">Email:</label>
+        <input type="email" id="newEmail" name="newEmail" required>
+        <label for="newPassword">Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+        <button type="submit">Sign Up</button>
+      </form>
+      <p>Already have an account? <a href="#" id="switchToLogin">Login</a></p>
+    </div>
+  </div>
+
+  <div id="searchResultsModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" id="closeSearchResultsModal">&times;</span>
+      <h2>Search Results</h2>
+      <ul id="resultsList">
+        </ul>
+      <p id="noResultsMessage" style="display: none;">No results found.</p>
+    </div>
+  </div>
+
+  <script>
+    // Get the modals
+    var loginModal = document.getElementById("loginModal");
+    var signupModal = document.getElementById("signupModal");
+    var searchResultsModal = document.getElementById("searchResultsModal");
+
+    // Get the buttons that open the modals
+    var openLoginBtn = document.getElementById("openLoginModal");
+    var openSignupBtn = document.getElementById("openSignupModal");
+    var searchButton = document.getElementById("searchButton");
+
+    // Get the <span> elements that close the modals
+    var closeLoginBtn = document.getElementById("closeLoginModal");
+    var closeSignupBtn = document.getElementById("closeSignupModal");
+    var closeSearchResultsBtn = document.getElementById("closeSearchResultsModal");
+
+    // Get the switch links
+    var switchToSignupLink = document.getElementById("switchToSignup");
+    var switchToLoginLink = document.getElementById("switchToLogin");
+
+    // When the user clicks the login button, open the login modal
+    openLoginBtn.onclick = function(event) {
+      event.preventDefault(); // Prevent default link behavior
+      loginModal.style.display = "block";
+    }
+
+    // When the user clicks the signup button, open the signup modal
+    openSignupBtn.onclick = function(event) {
+      event.preventDefault(); // Prevent default link behavior
+      signupModal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the login modal
+    closeLoginBtn.onclick = function() {
+      loginModal.style.display = "none";
+    }
+
+    // When the user clicks on <span> (x), close the signup modal
+    closeSignupBtn.onclick = function() {
+      signupModal.style.display = "none";
+    }
+
+    // When the user clicks on <span> (x), close the search results modal
+    closeSearchResultsBtn.onclick = function() {
+      searchResultsModal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == loginModal) {
+        loginModal.style.display = "none";
+      }
+      if (event.target == signupModal) {
+        signupModal.style.display = "none";
+      }
+      if (event.target == searchResultsModal) {
+        searchResultsModal.style.display = "none";
+      }
+    }
+
+    // Switch from Login to Signup modal
+    switchToSignupLink.onclick = function(event) {
+      event.preventDefault();
+      loginModal.style.display = "none";
+      signupModal.style.display = "block";
+    }
+
+    // Switch from Signup to Login modal
+    switchToLoginLink.onclick = function(event) {
+      event.preventDefault();
+      signupModal.style.display = "none";
+      loginModal.style.display = "block";
+    }
+
+    // Basic Search Functionality
+    const searchInput = document.getElementById('searchInput');
+    const resultsList = document.getElementById('resultsList');
+    const noResultsMessage = document.getElementById('noResultsMessage');
+
+    // Sample data to search through (you'd replace this with real content from your site)
+    const contentData = [
+      {
+        title: "MAKTABA Academy Overview",
+        description: "We offer specialized support in English academic writing, including in-text citation, reference list formatting, and other essential academic skills.",
+        url: "index.html"
+      },
+      {
+        title: "Digital Literacy Lecture - August 26, 2025",
+        description: "The Library will host a special lecture on 'Digital Literacy in the 21st Century' at 2:00 PM in the Main Hall.",
+        url: "#"
+      },
+      {
+        title: "New Library Arrivals",
+        description: "Explore the latest additions to our collection, including novels, historical archives, and literature classics.",
+        url: "#"
+      },
+      {
+        title: "Extended Library Hours - Starting July 1st",
+        description: "Starting July 1st, library operating hours will be extended to 9:00 PM on weekdays to accommodate evening study sessions.",
+        url: "#"
+      },
+      {
+        title: "About Us - History",
+        description: "Learn about the history of Maktaba Academy.",
+        url: "History.html"
+      },
+      {
+        title: "About Us - Vision, Mission, Objective",
+        description: "Understand our vision, mission, and objectives.",
+        url: "VMO.html"
+      },
+      {
+        title: "Directory Staff - Chief Librarian",
+        description: "Information about the Chief Librarian.",
+        url: "chiefs.html"
+      },
+      {
+        title: "Directory Staff - Organizational Chart",
+        description: "View the organizational chart of Maktaba Academy.",
+        url: "organizational.html"
+      },
+      {
+        title: "Guidelines - General Format: APA style",
+        description: "View APA styles",
+        url: "general-format.html"
+      },
+      {
+        title: "Guidelines - In-text Citation: The Basic",
+        description: "View In-Text Citation: The Basic",
+        url: "citation-basics.html"
+      },
+      {
+        title: "Guidelines - In-text Citation: Author/Authors",
+        description: "View In-Text Citation: Author/Authors",
+        url: "citation-authors.html"
+      },
+      {
+        title: "Guidelines - Reference List: Basic Rules",
+        description: "View Reference: Basic Rules",
+        url: "ref-basic.html"
+      },
+      {
+        title: "Guidelines - Reference List: Author/Authors",
+        description: "View Reference: Author/Authors",
+        url: "ref-authors.html"
+      },
+      {
+        title: "Guidelines - Reference List: Articles in Periodicals",
+        description: "View Reference: Articles in Periodicals",
+        url: "ref-periodicals.html"
+      },
+      {
+        title: "Guidelines - Reference List: Books",
+        description: "View Reference: Books",
+        url: "ref-books.html"
+      },
+      {
+        title: "Guidelines - Reference List: Other Print Sources",
+        description: "View Reference: Other Print Sources",
+        url: "ref-other-print.html"
+      },
+      {
+        title: "Guidelines - Reference List: Electronic Sources",
+        description: "View Reference: Electronic Sources",
+        url: "ref-electronic.html"
+      },
+      {
+        title: "Guidelines - Reference List: Audiovisual Media",
+        description: "View Reference: Audiovisual Media",
+        url: "ref-audio.html"
+      },
+      {
+        title: "Guidelines - Reference List: Non-Print Sources",
+        description: "View Reference: Non-Print Sources",
+        url: "ref-other.html"
+      },
+       
+       
+      // Add more relevant content from your website here
+    ];
+
+    searchButton.onclick = function() {
+      performSearch();
+    };
+
+    searchInput.addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        performSearch();
+      }
+    });
+
+    function performSearch() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      resultsList.innerHTML = ''; // Clear previous results
+      noResultsMessage.style.display = 'none'; // Hide no results message initially
+
+      if (searchTerm === "") {
+        searchResultsModal.style.display = "none"; // Hide modal if search is empty
+        return;
+      }
+
+      const filteredResults = contentData.filter(item =>
+        item.title.toLowerCase().includes(searchTerm) ||
+        item.description.toLowerCase().includes(searchTerm)
+      );
+
+      if (filteredResults.length > 0) {
+        filteredResults.forEach(item => {
+          const listItem = document.createElement('li');
+          listItem.innerHTML = `<h4><a href="${item.url}">${item.title}</a></h4><p>${item.description}</p>`;
+          resultsList.appendChild(listItem);
+        });
+      } else {
+        noResultsMessage.style.display = 'block';
+      }
+      searchResultsModal.style.display = "block"; // Show the search results modal
+    }
+  </script>
+
+
+
+</body>
+</html>
