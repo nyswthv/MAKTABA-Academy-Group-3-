@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maktaba Academy - Contact Us</title>
+  <meta name="description" content="Contact Maktaba Academy for inquiries, support, or feedback.">
+  <meta name="keywords" content="contact, form, support, feedback, Maktaba Academy">
+  <meta name="author" content="Your Group Name/Members">
+  <link rel="icon" type="image/x-icon" href="images/logolib.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css"> 
+<style>
+    /* Specific styling for the form elements in form.html only */
+    form {
+      max-width: 100%; /* Form will take full width of its column */
+      margin: 0; /* Remove auto margin as parent handles centering now */
+      background-color: #FCF8F0; /* Consistent with card background */
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      color: #4A3C33; /* Default text color for form elements */
+      /* Added display flex and flex-direction column to stack elements */
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group {
+      margin-bottom: 20px; /* Space between each field group */
+    }
+
+    form label {
+      display: block; /* Make labels appear on their own line */
+      margin-bottom: 8px; /* Space between label and input */
+      font-weight: bold;
+      color: #5A1632; /* Consistent with other labels */
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"], /* Added for phone number input type */
+    form textarea {
+      width: 100%; /* Make them take full width of their container */
+      padding: 12px; /* Consistent padding */
+      border: 1px solid #D1C4B0; /* Softer border */
+      border-radius: 6px;
+      font-size: 1em;
+      color: #333; /* Darker text for input fields */
+      background-color: #FDFDFD; /* Light background for input fields */
+    }
+
+    form input:focus,
+    form textarea:focus {
+      outline: none;
+      border-color: #A38B67; /* Highlight on focus */
+      box-shadow: 0 0 5px rgba(163, 139, 103, 0.5); /* Subtle shadow on focus */
+    }
+
+    form button[type="submit"] {
+      background-color: #6F1A3E; /* Primary button color */
+      color: white;
+      padding: 12px 25px; /* More padding for a better button feel */
+      border: none;
+      border-radius: 8px; /* Slightly more rounded */
+      cursor: pointer;
+      font-size: 1.1em;
+      width: 100%; /* Full width button */
+      margin-top: 10px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-weight: bold;
+    }
+
+    form button[type="submit"]:hover {
+      background-color: #5A1632; /* Darker on hover */
+      transform: translateY(-2px); /* Subtle lift effect */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Adjustments for mobile view, specific to form.html if needed */
+    @media screen and (max-width: 800px) {
+      /* Form specific adjustments for mobile */
+      form {
+        padding: 20px; /* Slightly less padding on mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <img src="images/logolib.png" alt="Maktaba Academy Logo" class="logo" />
+      <div class="header-text">
+        <h1>MAKTABA Academy</h1>
+        <p>Guiding You Through Citations, References, and Beyond.</p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+<a href="#">About Us</a>
+        <ul class="dropdown-menu">
+          <li><a href="history.html">History</a></li>
+          <li><a href="VMO.html">Vision, Mission, Objective</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="directory.html">Directory Staff</a>
+        <ul class="dropdown-menu">
+          <li><a href="chiefs.html">Chief Librarian</a></li>
+          <li><a href="organizational.html">Organizational Chart</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+       <a href="guidelines.html">Guidelines</a>
+        <ul class="dropdown-menu">
+	  <li><a href="general-format.html">General Format: APA Style</a></li>
+          <li><a href="citation-basics.html">In-text Citation: The Basics</a></li>
+          <li><a href="citation-authors.html">In-text Citation: Author/Authors</a></li>
+          <li><a href="ref-basic.html">Reference List: Basic Rules</a></li>
+          <li><a href="ref-authors.html">Reference List: Author/Authors</a></li>
+          <li><a href="ref-periodicals.html">Reference List: Articles in Periodicals</a></li>
+          <li><a href="ref-books.html">Reference List: Books</a></li>
+          <li><a href="ref-other-print.html">Reference List: Other Print Sources</a></li>
+          <li><a href="ref-electronic.html">Reference List: Electronic Sources</a></li>
+          <li><a href="ref-audio.html">Reference List: Audiovisual Media</a></li>
+          <li><a href="ref-other.html">Reference List: Other Non-Print Sources</a></li>
+        </ul>
+      </li>
+     <li><a href="resources.html">Resources</a></li>
+     <li><a href="form.html" class="active">Contact Us</a></li>
+     <li><a href="group.html">Group Info</a></li> 
+      <li class="right-aligned"><a href="#" id="openLoginModal">Login</a></li>
+      <li><a href="#" id="openSignupModal">Sign Up</a></li>
+    </ul>
+  </nav>
+
+
+
+  <div class="main-content-wrapper">
+    <div class="row">
+      <div class="leftcolumn">
+        <div class="card">
+          <h2 style="color: #6F1A3E;"><u>Contact Us</u></h2>
+          <p style="color: #4A3C33; text-align: center; margin-bottom: 30px;">Have questions, feedback, or need assistance? Please fill out the form below, and we'll get back to you as soon as possible.</p>
+
+          <form action="mailto:maktaba.academy@example.com" method="POST" enctype="text/plain">
+            <div class="form-group">
+              <label for="name">Your Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Your Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phonenumber">Phone Number:</label>
+              <input type="tel" id="phonenumber" name="phonenumber" required />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <h1>&copy;2025 The MAKTABA Academy. All rights reserved. |Last Updated: 2 July 2025. | This website was developed for the purpose of learning XHTML & CSS only. <br>|
+   <a href="privacy.html">Privacy Policy</a> | <a href="termsofuse.html">Terms of Use </a>| Resolution:  1920 x 1800 (Recommended)</h1>
+  </div>
+
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" id="closeLoginModal">&times;</span>
+      <h2>Login</h2>
+      <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="#" id="switchToSignup">Sign Up</a></p>
+    </div>
+  </div>
+
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" id="closeSignupModal">&times;</span>
+      <h2>Sign Up</h2>
+      <form>
+      <label for="newUsername">Username:</label>
+        <input type="text" id="newUsername" name="newUsername" required>
+        <label for="newEmail">Email:</label>
+        <input type="email" id="newEmail" name="newEmail" required>
+        <label for="newPassword">Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+        <button type="submit">Sign Up</button>
+      </form>
+      <p>Already have an account? <a href="#" id="switchToLogin">Login</a></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,536 @@
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%; /* Ensure html and body take full viewport height */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  background-color: #6F1A3E;
+  color: #FCF8F0;
+
+  display: flex; /* Make body a flex container */
+  flex-direction: column; /* Stack children vertically */
+}
+
+   .header-container {
+        display: flex;
+        background: linear-gradient(to right, #6F1A3E, #5A1632);
+        color: #FCF8F0;
+        padding: 40px 0;
+        text-align: center;
+        justify-content: center;
+        position: relative;
+     }
+
+
+.logo {
+  position: absolute;
+  left: 40px;
+  top: 50%; /*website logo*/
+  transform: translateY(-50%);
+  height: 260px;
+}
+
+  .header-text h1 {
+     margin: 0;
+     font-size: 40px;
+     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+     color: #FCF8F0;
+     letter-spacing: 2px;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+   .header-text p {
+        font-size: 16px;
+        color: #FCF8F0;
+        margin-top: 10px;
+        opacity: 0.95;
+      }
+
+
+nav {
+  background: linear-gradient(to right, #7D2146, #6F1A3E);
+  padding: 5px 0;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 14px; /*navigation bar*/
+  text-align: left;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0; /* Prevent nav from shrinking */
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: left;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+nav ul li {
+  position: relative;
+  margin: 0 25px;
+}
+
+nav ul li a {
+  color: #FCF8F0;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 18px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  font-size: 1.1em;
+  display: inline-block;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background-color: #fffafa;
+  color: #5F1534;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+nav ul li.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute; /*dropdown-nav*/
+  top: 100%;
+  left: 0;
+  background: linear-gradient(to right, #7D2146, #6F1A3E);
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 0;
+  z-index: 1000;
+  min-width: 180px;
+  overflow: hidden;
+}
+
+.dropdown-menu li {
+  margin: 0;
+}
+
+.dropdown-menu li a {
+  display: block;
+  width: 100%;
+  padding: 12px 18px;
+  color: #FCF8F0;
+  font-size: 1em;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #fffafa;
+  color: #5F1534;
+}
+
+/* New Styles for Modals and Search */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1001; /* Higher z-index to appear on top of other content */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 30px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  max-width: 600px; /* Slightly wider for search results */
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  color: #4A3C33; /* Inherit body text color */
+}
+
+.close-button {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.modal-content h2 {
+  text-align: center;
+  color: #6F1A3E;
+  margin-bottom: 25px;
+}
+
+.modal-content form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #5A1632;
+}
+
+.modal-content form input[type="text"],
+.modal-content form input[type="email"],
+.modal-content form input[type="password"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.modal-content form button {
+  background-color: #6F1A3E;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  width: 100%;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content form button:hover {
+  background-color: #5A1632;
+}
+
+.modal-content p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+.modal-content p a {
+  color: #7D2146;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.modal-content p a:hover {
+  text-decoration: underline;
+}
+
+/* Search Bar Styling */
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto; /* Adjusted margin to be closer to nav */
+  max-width: 800px; /* Wider search bar */
+  padding: 0 16px;
+  flex-shrink: 0; /* Prevent search container from shrinking */
+}
+
+#searchInput {
+  flex-grow: 1;
+  padding: 12px 15px;
+  border: 2px solid #6F1A3E;
+  border-radius: 8px 0 0 8px;
+  font-size: 1.1em;
+  outline: none;
+}
+
+#searchButton {
+  background-color: #6F1A3E;
+  color: #FCF8F0;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+}
+
+#searchButton:hover {
+  background-color: #5A1632;
+}
+
+#searchButton .fa {
+  margin-right: 5px;
+}
+
+/* Search Results inside Modal */
+#searchResultsModal .modal-content {
+  min-height: 200px; /* Give some space for results */
+  text-align: left; /* Align text left inside results modal */
+}
+
+#searchResultsModal h2 {
+  margin-top: 0;
+  color: #6F1A3E;
+  text-align: center; /* Keep title centered */
+}
+
+#resultsList {
+  list-style: none;
+  padding: 0;
+}
+
+#resultsList li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+#resultsList li:last-child {
+  border-bottom: none;
+}
+
+#resultsList li h4 {
+  margin: 0 0 5px 0;
+  color: #5A1632;
+}
+
+#resultsList li p {
+  margin: 0 0 5px 0;
+  font-size: 0.95em;
+  color: #666;
+}
+
+#resultsList li a {
+  color: #7D2146;
+  text-decoration: none;
+}
+
+#resultsList li a:hover {
+  text-decoration: underline;
+}
+
+/* Optional: Style for right-aligned nav items */
+.right-aligned {
+  margin-left: auto; /* Pushes items to the right */
+  margin-right: 0; /* Ensures no extra right margin */
+}
+
+.leftcolumn {
+  float: left;
+  width: 100%; /*MAKTABA Academy column*/
+  padding: 20px;
+}
+
+.rightcolumn {
+  float: left; /*Announcement column*/
+  width: 25%;
+  padding: 20px;
+}
+
+.card {
+  background-color: #FCF8F0; /*card use for MAKTABA&announcement*/
+  color: black;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+/* The .row class using float has conflicts with flexbox for sticky footer.
+   It's better to use flexbox for column layouts as well if possible.
+   For now, to maintain existing layout, we add overflow:hidden to contain floats. */
+.row {
+  overflow: hidden; /* Clear floats within the row */
+  display: flex; /* Use flex to manage columns */
+  flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+}
+
+
+.btn {
+  display: inline-block;
+  background: linear-gradient(to right, #A38B67, #C0A88B);
+  color: #4A3C33;
+  padding: 18px 40px;
+  text-decoration: none; /*button explore*/
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.2em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.footer {
+  padding: 10px;
+  text-align: center;
+  background-color: #5A1632; /*footer*/
+  color: #E6E0D5;
+  flex-shrink: 0; /* Prevent footer from shrinking */
+}
+
+.footer a {
+  color: #A38B67;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: none;
+}
+
+.footer h1 {
+  font-size: 16px;
+  text-align: center;
+}
+
+.footer p {
+  font-weight: none;
+  font-size: 14px;
+  text-align: left;
+}
+
+/* Styles for guideline sections and cards */
+.guideline-section-heading {
+    color: #6F1A3E; /* A darker shade for headings */
+    margin-top: 35px;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    border-bottom: 2px solid #A38B67;
+    padding-bottom: 10px;
+}
+
+.section-description {
+    font-size: 1.1em;
+    color: #4A3C33;
+    margin-bottom: 25px;
+}
+
+/* NEW: Styles for images above guideline card containers */
+.guideline-section-image {
+    width: %; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Slightly rounded corners */
+    margin-bottom: 20px; /* Space between image and cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+
+.guideline-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between cards */
+    margin-bottom: 40px;
+    justify-content: flex-start; /* Align cards to the start */
+}
+
+.guideline-cards-container.single-card-layout .guideline-card {
+    width: 250px; /* Fixed width for single card */
+    max-width: 100%; /* Ensure it's responsive */
+}
+
+.guideline-cards-container.two-column-layout .guideline-card {
+    flex: 1 1 calc(50% - 10px); /* Two columns, responsive */
+    max-width: calc(50% - 10px);
+}
+
+.guideline-cards-container.three-column-layout .guideline-card {
+    flex: 1 1 calc(33.333% - 14px); /* Three columns, responsive */
+    max-width: calc(33.333% - 14px);
+}
+
+
+.guideline-card {
+    background-color: #F8F0E3; /* Lighter background for the cards */
+    border: 1px solid #D1C4B0;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: #4A3C33; /* Darker text for readability */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Use flex for internal alignment */
+    flex-direction: column;
+    justify-content: space-between; /* Push description to bottom if needed */
+    min-height: 120px; /* Ensure a minimum height for cards */
+}
+
+.guideline-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #FCF8F0; /* Slightly lighter on hover */
+}
+
+.guideline-card h4 {
+    margin-top: 0;
+    color: #7D2146; /* A prominent color for card titles */
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.guideline-card p {
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #666; /* Softer color for descriptions */
+    margin-bottom: 0;
+}
+
+/* Main content wrapper, will grow to push footer down */
+.main-content-wrapper {
+    max-width: 1200px; /* Set a maximum width for the content area */
+    margin: 20px auto; /* Center the content horizontally and add some top/bottom margin */
+    padding: 0 20px; /* Add some padding on the sides for smaller screens */
+    flex-grow: 1; /* This is key: allow the content wrapper to grow and fill available space */
+}
+
+
+@media screen and (max-width: 800px) { /*mobile view*/
+  .leftcolumn,
+  .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+  .guideline-cards-container.two-column-layout .guideline-card,
+  .guideline-cards-container.three-column-layout .guideline-card {
+      flex: 1 1 calc(100% - 10px); /* Stack columns on smaller screens */
+      max-width: calc(100% - 10px);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+}
+
+/* styles.css */
+
+.card img {
+  border-radius: 8px; /* Keeps the rounded corners you wanted earlier */
+  border: 3px solid #6F1A3E; 
+  
+  /* Existing properties for centering and responsiveness */
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  height: auto;
+}

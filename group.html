@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maktaba Academy - Group Members Information</title>
+  <link rel="icon" type="image/x-icon" href="images/logolib.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      margin: 0;
+      padding: 0;
+      background-color: #6F1A3E;
+      color: #FCF8F0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .content-wrapper {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header-container {
+      display: flex;
+      background: linear-gradient(to right, #6F1A3E, #5F1534);
+      color: white;
+      padding: 25px 0;
+      text-align: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .logo {
+      position: absolute;
+      left: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 260px;
+    }
+
+    .header-text h1 {
+      margin: 0;
+      font-size: 40px;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      color: #FCF8F0;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-text p {
+      font-size: 16px;
+      color: #FCF8F0;
+      margin-top: 10px;
+      opacity: 0.95;
+    }
+
+    nav {
+      background: linear-gradient(to right, #7D2146, #6F1A3E);
+      padding: 5px 0;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      font-size: 14px;
+      text-align: left;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: left;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      position: relative;
+      margin: 0 25px;
+    }
+
+    nav ul li a {
+      color: #FCF8F0;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 18px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      font-size: 1.1em;
+      display: inline-block;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      background-color: #fffafa;
+      color: #5F1534;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    nav ul li.dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: linear-gradient(to right, #7D2146, #6F1A3E);
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 0;
+      z-index: 1000;
+      min-width: 180px;
+      overflow: hidden;
+    }
+
+    .dropdown-menu li {
+      margin: 0;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      width: 100%;
+      padding: 12px 18px;
+      color: #FCF8F0;
+      font-size: 1em;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: transparent;
+      border-radius: 0;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #fffafa;
+      color: #5F1534;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 30px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      position: relative;
+      color: #4A3C33;
+    }
+
+    .close-button {
+      color: #aaa;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+      color: black;
+      text-decoration: none;
+    }
+
+    .modal-content h2 {
+      text-align: center;
+      color: #6F1A3E;
+      margin-bottom: 25px;
+    }
+
+    .modal-content form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #5A1632;
+    }
+
+    .modal-content form input[type="text"],
+    .modal-content form input[type="email"],
+    .modal-content form input[type="password"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    .modal-content form button {
+      background-color: #6F1A3E;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.1em;
+      width: 100%;
+      margin-top: 15px;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal-content form button:hover {
+      background-color: #5A1632;
+    }
+
+    .modal-content p {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9em;
+    }
+
+    .modal-content p a {
+      color: #7D2146;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .modal-content p a:hover {
+      text-decoration: underline;
+    }
+
+    .right-aligned {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    h2 {
+      text-align: center;
+      color: black;
+    }
+
+    .card {
+      background-color: #FCF8F0;
+      width: 60%;
+      margin-left: 20%;
+      color: black;
+      padding: 40px;
+      margin-top: 10px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      /* align-items: center;  Removed from here to control UL centering specifically */
+    }
+
+    /* For the image inside the card */
+    .image-container img {
+        width: 560px;
+        height: 460px;
+        display: block;
+        margin: 0 auto 20px auto;
+    }
+
+   
+    .card ul {
+        width: 100%; /* Make the ul only as wide as its content */
+        margin: 20px auto; /* Centers the ul horizontally within the .card */
+        list-style-type: none; /* Remove default bullet points for the main ul */
+        padding: 0; /* Remove default padding from the ul */
+        text-align: center; /* Center the text for direct <li> children of this ul */
+    }
+
+    .card ul li {
+        margin-bottom: 5px; /* Add some space between items */
+        padding: 0;
+    }
+
+    /* For the nested UL (Names & Student IDs) */
+    .card ul ul {
+        list-style-type: disc; /* Bring back standard bullet points for nested list */
+        margin: 10px auto; /* Center the nested ul, adjust margin as needed */
+        padding-left: 20px; /* Add padding for bullet points */
+        text-align: left; /* Keep names left-aligned for readability */
+        width: fit-content; /* Ensure it's centered based on its content width */
+    }
+
+    .card ul ul li {
+        text-align: left; /* Ensure nested list items' text is left-aligned */
+    }
+ 
+
+
+    .footer {
+      padding: 10px;
+      text-align: center;
+      background-color: #5A1632;
+      color: #E6E0D5;
+      margin-top: 20px;
+    }
+
+    .footer a {
+      color: #A38B67;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: none;
+    }
+
+    .footer h1 {
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .footer p {
+      font-weight: none;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    @media screen and (max-width: 800px) {
+      .leftcolumn,
+      .rightcolumn {
+        width: 100%;
+        padding: 0;
+      }
+
+      .logo {
+        position: static;
+        transform: none;
+        height: 100px;
+        margin-bottom: 10px;
+      }
+
+      .header-container {
+        flex-direction: column;
+        padding: 15px 0;
+      }
+
+      .header-text h1 {
+        font-size: 30px;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+
+      nav ul li a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <img src="images/logolib.png" alt="Maktaba Academy Logo" class="logo" />
+      <div class="header-text">
+        <h1>MAKTABA Academy</h1>
+        <p>Guiding You Through Citations, References, and Beyond.</p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="#">About Us</a>
+        <ul class="dropdown-menu">
+          <li><a href="history.html">History</a></li>
+          <li><a href="VMO.html">Vision, Mission, Objective</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#">Directory Staff</a>
+        <ul class="dropdown-menu">
+          <li><a href="chiefs.html">Chief Librarian</a></li>
+          <li><a href="organizational.html">Organizational Chart</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+       <a href="guidelines.html">Guidelines</a>
+        <ul class="dropdown-menu">
+	  <li><a href="general-format.html">General Format: APA Style</a></li>
+          <li><a href="citation-basics.html">In-text Citation: The Basics</a></li>
+          <li><a href="citation-authors.html">In-text Citation: Author/Authors</a></li>
+          <li><a href="ref-basic.html">Reference List: Basic Rules</a></li>
+          <li><a href="ref-authors.html">Reference List: Author/Authors</a></li>
+          <li><a href="ref-periodicals.html">Reference List: Articles in Periodicals</a></li>
+          <li><a href="ref-books.html">Reference List: Books</a></li>
+          <li><a href="ref-other-print.html">Reference List: Other Print Sources</a></li>
+          <li><a href="ref-electronic.html">Reference List: Electronic Sources</a></li>
+          <li><a href="ref-audio.html">Reference List: Audiovisual Media</a></li>
+          <li><a href="ref-other.html">Reference List: Other Non-Print Sources</a></li>
+        </ul>
+      </li>
+     <li><a href="resources.html">Resources</a></li>
+     <li><a href="form.html">Contact Us</a></li>
+     <li><a href="group.html" class="active">Group Info</a></li> 
+      <li class="right-aligned"><a href="#" id="openLoginModal">Login</a></li>
+      <li><a href="#" id="openSignupModal">Sign Up</a></li>
+    </ul>
+  </nav>
+
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="leftcolumn">
+        <div class="card">
+                    <h2 style="color: #6F1A3E;"><u>Our Project Team</u></h2>
+          <p style="color: #4A3C33; text-align: center; margin-bottom: 30px;">Meet the dedicated team members who developed the Maktaba Academy website as part of the IML254 Group Project.</p>
+
+          <div class="image-container">
+            <img src="images/gpmem.png" alt="Group Member Image">
+          </div>
+
+          <h3 style="color: #7D2146; margin-top: 0; margin-bottom: 0px;">Project Overview:</h3>
+          <p style="color: #4A3C33; list-style-type: disc; text-align: left; ">
+            <li><strong>Project Title:</strong> Corporate Website (Maktaba Academy)</li>
+            <li><strong>Status:</strong> Group Project </li>
+            <li><strong>Number of Web Pages:</strong> 15 pages (minimum)</li>
+            <li><strong>Language & Style Sheet:</strong> XHTML & External CSS</li>
+            <li><strong>Form of Submission:</strong> GitHub (Web Host)</li>
+            <li><strong>Course Code:</strong> IML254</li>
+            <li><strong>Course Name:</strong> INTRODUCTION TO WEB CONTENT DEVELOPMENT</li>
+            <li><strong>Faculty:</strong> FACULTY OF INFORMATION SCIENCE</li>
+            <li><strong>Submission Date:</strong> [2 JULY 2025]</li>
+          </p>
+
+          <h3 style="color: #7D2146; margin-top: 0px; margin-bottom: 0px;">GROUP 3 Member Details:</h3>
+           <p style="color: #4A3C33; list-style-type: disc; text-align: left; ">
+            <li> NUR NISRINA BINTI NORAZALI (2023457152)
+            <li> NUR IMAN SHAKIRAH BINTI NUR AFFENDI (2023825284)
+            <li> NUR ADILAH BINTI MOHD AZMI (2023875138)
+            <li> HAZIQUE ([INSERT STUDENT ID])
+          </p> 
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+        <h1>&copy;2025 The MAKTABA Academy. All rights reserved. |Last Updated: 2 July 2025. | This website was developed for the purpose of learning XHTML & CSS only. <br>|
+   <a href="privacy.html">Privacy Policy</a> | <a href="termsofuse.html">Terms of Use </a>| Resolution:  1920 x 1800 (Recommended)</h1>  </div>
+
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" id="closeLoginModal">&times;</span>
+      <h2>Login</h2>
+      <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="#" id="switchToSignup">Sign Up</a></p>
+    </div>
+  </div>
+
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" id="closeSignupModal">&times;</span>
+      <h2>Sign Up</h2>
+      <form>
+        <label for="newUsername">Username:</label>
+        <input type="text" id="newUsername" name="newUsername" required>
+        <label for="newEmail">Email:</label>
+        <input type="email" id="newEmail" name="newEmail" required>
+        <label for="newPassword">Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+        <button type="submit">Sign Up</button>
+      </form>
+      <p>Already have an account? <a href="#" id="switchToLogin">Login</a></p>
+    </div>
+  </div>
+
+  <div id="searchResultsModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" id="closeSearchResultsModal">&times;</span>
+      <h2>Search Results</h2>
+      <ul id="resultsList">
+      </ul>
+      <p id="noResultsMessage" style="display: none;">No results found.</p>
+    </div>
+  </div>
+
+  <script>
+    var loginModal = document.getElementById("loginModal");
+    var signupModal = document.getElementById("signupModal");
+    var searchResultsModal = document.getElementById("searchResultsModal");
+
+    var openLoginBtn = document.getElementById("openLoginModal");
+    var openSignupBtn = document.getElementById("openSignupModal");
+
+    var closeLoginBtn = document.getElementById("closeLoginModal");
+    var closeSignupBtn = document.getElementById("closeSignupModal");
+    var closeSearchResultsBtn = document.getElementById("closeSearchResultsModal");
+
+    var switchToSignupLink = document.getElementById("switchToSignup");
+    var switchToLoginLink = document.getElementById("switchToLogin");
+
+    openLoginBtn.onclick = function(event) {
+      event.preventDefault();
+      loginModal.style.display = "block";
+    }
+
+    openSignupBtn.onclick = function(event) {
+      event.preventDefault();
+      signupModal.style.display = "block";
+    }
+
+    closeLoginBtn.onclick = function() {
+      loginModal.style.display = "none";
+    }
+
+    closeSignupBtn.onclick = function() {
+      signupModal.style.display = "none";
+    }
+
+    closeSearchResultsBtn.onclick = function() {
+      searchResultsModal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == loginModal) {
+        loginModal.style.display = "none";
+      }
+      if (event.target == signupModal) {
+        signupModal.style.display = "none";
+      }
+      if (event.target == searchResultsModal) {
+        searchResultsModal.style.display = "none";
+      }
+    }
+
+    switchToSignupLink.onclick = function(event) {
+      event.preventDefault();
+      loginModal.style.display = "none";
+      signupModal.style.display = "block";
+    }
+
+    switchToLoginLink.onclick = function(event) {
+      event.preventDefault();
+      signupModal.style.display = "none";
+      loginModal.style.display = "block";
+    }
+
+    // Ensure searchInput and searchButton exist in your HTML if you want search functionality
+    // (They are not present in the HTML provided, but the JS references them)
+    const searchInput = document.getElementById('searchInput');
+    const resultsList = document.getElementById('resultsList');
+    const noResultsMessage = document.getElementById('noResultsMessage');
+    const searchButton = document.getElementById("searchButton");
+
+    const contentData = [
+      {
+        title: "MAKTABA Academy Overview",
+        description: "We offer specialized support in English academic writing, including in-text citation, reference list formatting, and other essential academic skills.",
+        url: "index.html"
+      },
+      {
+        title: "Digital Literacy Lecture - August 26, 2025",
+        description: "The Library will host a special lecture on 'Digital Literacy in the 21st Century' at 2:00 PM in the Main Hall.",
+        url: "#"
+      },
+      {
+        title: "New Library Arrivals",
+        description: "Explore the latest additions to our collection, including novels, historical archives, and literature classics.",
+        url: "#"
+      },
+      {
+        title: "Extended Library Hours - Starting July 1st",
+        description: "Starting July 1st, library operating hours will be extended to 9:00 PM on weekdays to accommodate evening study sessions.",
+        url: "#"
+      },
+      {
+        title: "About Us - History",
+        description: "Learn about the history of Maktaba Academy.",
+        url: "History.html"
+      },
+      {
+        title: "About Us - Vision, Mission, Objective",
+        description: "Understand our vision, mission, and objectives.",
+        url: "VMO.html"
+      },
+      {
+        title: "Directory Staff - Chief Librarian",
+        description: "Information about the Chief Librarian.",
+        url: "chiefs.html"
+      },
+      {
+        title: "Directory Staff - Organizational Chart",
+        description: "View the organizational chart of Maktaba Academy.",
+        url: "organization.html"
+      },
+    ];
+
+    if (searchButton) {
+      searchButton.onclick = function() {
+        performSearch();
+      };
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+          performSearch();
+        }
+      });
+    }
+
+    function performSearch() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      resultsList.innerHTML = '';
+      noResultsMessage.style.display = 'none';
+
+      if (searchTerm === "") {
+        searchResultsModal.style.display = "none";
+        return;
+      }
+
+      const filteredResults = contentData.filter(item =>
+        item.title.toLowerCase().includes(searchTerm) ||
+        item.description.toLowerCase().includes(searchTerm)
+      );
+
+      if (filteredResults.length > 0) {
+        filteredResults.forEach(item => {
+          const listItem = document.createElement('li');
+          listItem.innerHTML = `<h4><a href="${item.url}">${item.title}</a></h4><p>${item.description}</p>`;
+          resultsList.appendChild(listItem);
+        });
+      } else {
+        noResultsMessage.style.display = 'block';
+      }
+      searchResultsModal.style.display = "block";
+    }
+  </script>
+</body>
+</html>
